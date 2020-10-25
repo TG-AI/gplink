@@ -13,7 +13,7 @@ BOT_TOKEN = environ.get('BOT_TOKEN')
 def start(update, context):
 
     update.message.reply_text(
-        f'Hi! Mr {update.message.from_user.first_name}\n\nSend Me Your Link Fr Short Your Link\n\nFOR MORE TYPE /help \n\nany doubt ask here 👉 @AI_BOT_HELP\n\n©️ @AI_bot_projects')
+        f"Hi! Mr {update.message.from_user.first_name}\n\nI'm GPlink bot. Just send me link and get short link\n\n/help for more help \n\nany doubt ask here 👉 @AI_BOT_HELP\n\n©️ @AI_bot_projects")
 
 
 def help_command(update, context):
