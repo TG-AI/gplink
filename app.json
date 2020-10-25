@@ -1,0 +1,29 @@
+{
+    "name": "LAKHAC'S GpLINK SHORTNER TELEGRAM BOT",
+    "description": "Telegram's best Open Source ALL-In-One Multi Purpose RoBot. Create your Fork now.",
+    "keywords": [
+        "telegram",
+        "gplink",
+        "Telegram bot"
+    ],
+    "website": "https://github.com/Lakhac/gplinkBot",
+    "repository": "https://github.com/Lakhac/gplinkBot",
+    "env": {
+        "BOT_TOKEN": {
+            "description": "Your bot token",
+            "value": ""
+        }
+    },
+    "addons": [],
+    "buildpacks": [
+        {
+            "url": "heroku/python"
+        }
+    ],
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
+    }
+}
