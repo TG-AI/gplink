@@ -13,12 +13,12 @@ BOT_TOKEN = environ.get('BOT_TOKEN')
 def start(update, context):
 
     update.message.reply_text(
-        f'Hi! Mr {update.message.from_user.first_name}\n\nSend Me Your Link Fr Short Your Link\n\nFOR MORE TYPE /help \n\n©️ @AI_bot_projects')
+        f'Hi! Mr {update.message.from_user.first_name}\n\nSend Me Your Link Fr Short Your Link\n\nFOR MORE TYPE /help \n\nany doubt ask here 👉 @AI_BOT_HELP\n\n©️ @AI_bot_projects')
 
 
 def help_command(update, context):
 
-    update.message.reply_text('**Tutorial**\n\nHello This Bot Can Short Your Link\n\nFirst <b>YOU HAVE TO GET YOUR API TOKEN OF GPLINK FROM <\b>https://gplinks.in/member/tools/api \n\nAFTER THAT COPY THAT LINK FROM GPLINK TOOLS API\nIT WILL LOOK LIKE  https://gplinks.in/api?api=6a4cb74d70edd86803333333333a&\nSENT IT TO ME\n\nNOW YOU ARE DONE JUST SEND LINK TO THIS BOT \n\nNOW YOU CAN USE THIS BOT \nTHANKS FOR USING MY BOT \n\n')
+    update.message.reply_text('**Tutorial**\n\nHello This Bot Can Short Your Link\n\nFirst YOU HAVE TO GET YOUR API TOKEN OF GPLINK FROM https://gplinks.in/member/tools/api \n\nAFTER THAT COPY THAT LINK FROM GPLINK TOOLS API\nIT WILL LOOK LIKE  https://gplinks.in/api?api=6a4cb74d70edd86803333333333a&\nSENT IT TO ME\n\nNOW YOU ARE DONE JUST SEND LINK TO THIS BOT \n\nNOW YOU CAN USE THIS BOT \nTHANKS FOR USING MY BOT \n\n')
 
 
 def echo(update, context):
