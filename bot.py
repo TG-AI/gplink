@@ -25,7 +25,8 @@ def start(update, context):
 
     reply_markup = InlineKeyboardMarkup(keyboard)
 
-    update.message.reply_text(f"Hi! Mr {update.message.from_user.first_name}\n\nI'm GPlink bot. Just send me link and get short link\n\n/help for more help \n\nany doubt ask here 👉 @AI_BOT_HELP\n\n©️ @AI_bot_projects"), reply_markup=reply_markup)
+    update.message.reply_text(
+        f"Hi! Mr {update.message.from_user.first_name}\n\nI'm GPlink bot. Just send me link and get short link\n\n/help for more help \n\nany doubt ask here 👉 @AI_BOT_HELP\n\n©️ @AI_bot_projects", reply_markup=reply_markup)
 
 
     
