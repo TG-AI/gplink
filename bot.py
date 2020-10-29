@@ -8,6 +8,7 @@ from gplink_tokens import tokens
 from os import environ
 import aiohttp
 
+ONE = 'hello how are you'
 
 
 BOT_TOKEN = environ.get('BOT_TOKEN')
@@ -91,37 +92,6 @@ def echo(update, context):
         if r['status'] == 'error':
             update.message.reply_text(' Error : ' + r['message'])
             
-            
-def main():
-    # Create the Updater and pass it your bot's token.
-    updater = Updater("TOKEN", use_context=True)
-
-    # Get the dispatcher to register handlers
-    dp = updater.dispatcher
-
-    # Setup conversation handler with the states FIRST and SECOND
-    # Use the pattern parameter to pass CallbackQueries with specific
-    # data pattern to the corresponding handlers.
-    # ^ means "start of line/string"
-    # $ means "end of line/string"
-    # So ^ABC$ will only allow 'ABC'
-    conv_handler = ConversationHandler(
-        entry_points=[CommandHandler('start', start)],
-        states={
-            FIRST: [
-                CallbackQueryHandler(one, pattern='^' + str(ONE) + '$'),
-                CallbackQueryHandler(two, pattern='^' + str(TWO) + '$'),
-                CallbackQueryHandler(three, pattern='^' + str(THREE) + '$'),
-                CallbackQueryHandler(four, pattern='^' + str(FOUR) + '$'),
-            ],
-            SECOND: [
-                CallbackQueryHandler(start_over, pattern='^' + str(ONE) + '$'),
-                CallbackQueryHandler(end, pattern='^' + str(TWO) + '$'),
-            ],
-        },
-        fallbacks=[CommandHandler('start', start)],
-    )            
-
 
 def main():
     updater = Updater(
