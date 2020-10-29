@@ -34,8 +34,8 @@ def start(update, context):
     
 def help_command(update, context):
 
-    update.message.reply_text('Hello This Bot Can Short Your Link\n\nFirst YOU HAVE TO GET YOUR API TOKEN OF GPLINK by using /auth \n\nAFTER THAT COPY THAT LINK FROM GPLINK TOOLS API\nIT WILL LOOK LIKE  https://gplinks.in/api?api=6a4cb74d70edd86803333333333a&\nSENT IT TO ME\n\nNOW YOU ARE DONE JUST SEND LINK TO THIS BOT \n\nNOW YOU CAN USE THIS BOT \nTHANKS FOR USING MY BOT \n\n')
-
+    update.message.reply_text('<b>Hello This Bot Can Short Your Link<\b>\n\nFirst YOU HAVE TO GET YOUR API TOKEN OF GPLINK by using /auth \n\nAFTER THAT COPY THAT LINK FROM GPLINK TOOLS API\nIT WILL LOOK LIKE  https://gplinks.in/api?api=6a4cb74d70edd86803333333333a&\nSENT IT TO ME\n\nNOW YOU ARE DONE JUST SEND LINK TO THIS BOT \n\n')
+         disable_web_page_preview=True, parse_mode=ParseMode.MARKDOWN)
 def auth(update, context):
     keyboard = [
         [
@@ -46,23 +46,6 @@ def auth(update, context):
     reply_markup = InlineKeyboardMarkup(keyboard)
 
     update.message.reply_text('please login to your gplink account by pressing the button below and copy paste the api url here\n\neg: https://gplinks.in/api?api=6a4cb74d70edd86803333333333a&', reply_markup=reply_markup)
-
-    
-def one(update, context):
-    """Show new choice of buttons"""
-    query = update.callback_query
-    query.answer()
-    keyboard = [
-        [
-            InlineKeyboardButton("3", callback_data=str(THREE)),
-            InlineKeyboardButton("4", callback_data=str(FOUR)),
-        ]
-    ]
-    reply_markup = InlineKeyboardMarkup(keyboard)
-    query.edit_message_text(
-        text="First CallbackQueryHandler, Choose a route", reply_markup=reply_markup
-    )
-    return FIRST            
 
     
 def echo(update, context):
