@@ -1,5 +1,5 @@
 # import pyshorteners
-from pyrogram import InlineKeyboardMarkup, InlineKeyboardButton
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import requests
 import json
@@ -21,27 +21,20 @@ def help_command(update, context):
 
     update.message.reply_text('**Tutorial**\n\nHello This Bot Can Short Your Link\n\nFirst YOU HAVE TO GET YOUR API TOKEN OF GPLINK FROM https://gplinks.in/member/tools/api \n\nAFTER THAT COPY THAT LINK FROM GPLINK TOOLS API\nIT WILL LOOK LIKE  https://gplinks.in/api?api=6a4cb74d70edd86803333333333a&\nSENT IT TO ME\n\nNOW YOU ARE DONE JUST SEND LINK TO THIS BOT \n\nNOW YOU CAN USE THIS BOT \nTHANKS FOR USING MY BOT \n\n')
 
+def auth(update, context):
+    keyboard = [
+        [
+            InlineKeyboardButton("Option 1", callback_data='1'),
+            InlineKeyboardButton("Option 2", callback_data='2'),
+        ],
+        [InlineKeyboardButton("Option 3", callback_data='3')],
+    ]
+
+    reply_markup = InlineKeyboardMarkup(keyboard)
+
+    update.message.reply_text('Please choose:', reply_markup=reply_markup)
 
 
-@pyrogram.Client.on_message(pyrogram.Filters.command(["auth"]))
-async def start(bot, m):
-    await m.reply_text(
-        text=f"Hello,\n\ni'm a Telegram URL Upload Bot!   \n<b>Please send me any direct download URL Link, i can upload to telegram as File/Video</b> \n<b>/help if you have any doubt in using me..</b>",
-        quote=True,
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton('📌  Support Group', url='https://t.me/AI_BOT_HELP'),
-                    InlineKeyboardButton('🔖  Projects Channel', url='https://t.me/AI_bot_projects')
-                ],
-                [
-                    InlineKeyboardButton('💡  Supported urls', url='https://rentry.co/prub9/'),
-                    InlineKeyboardButton('👨  Master', url='https://t.me/pppppgame')
-                ]
-            ]
-        )
-    )
-    
     
 def echo(update, context):
 
@@ -79,6 +72,7 @@ def main():
 
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help_command))
+     dp.add_handler(CommandHandler("auth", auth))
                               
     dp.add_handler(MessageHandler(Filters.text & ~Filters.command, echo))
     updater.start_polling()
