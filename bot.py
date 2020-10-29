@@ -12,11 +12,24 @@ import aiohttp
 
 BOT_TOKEN = environ.get('BOT_TOKEN')
 def start(update, context):
+    keyboard = [
+        [
+            InlineKeyboardButton("📌  Support Group", url='https://t.me/AI_BOT_HELP'),
+            InlineKeyboardButton("🔖  Projects Channel", url='https://t.me/AI_bot_projects'),
+        ],
+        [
+            InlineKeyboardButton("How to use me", callback_data='3'),
+            InlineKeyboardButton("👨  Master", url='https://t.me/pppppgame'),
+        ],
+    ]
 
-    update.message.reply_text(
-        f"Hi! Mr {update.message.from_user.first_name}\n\nI'm GPlink bot. Just send me link and get short link\n\n/help for more help \n\nany doubt ask here 👉 @AI_BOT_HELP\n\n©️ @AI_bot_projects")
+    reply_markup = InlineKeyboardMarkup(keyboard)
+
+    update.message.reply_text(f"Hi! Mr {update.message.from_user.first_name}\n\nI'm GPlink bot. Just send me link and get short link\n\n/help for more help \n\nany doubt ask here 👉 @AI_BOT_HELP\n\n©️ @AI_bot_projects"), reply_markup=reply_markup)
 
 
+    
+    
 def help_command(update, context):
 
     update.message.reply_text('Hello This Bot Can Short Your Link\n\nFirst YOU HAVE TO GET YOUR API TOKEN OF GPLINK by using /auth \n\nAFTER THAT COPY THAT LINK FROM GPLINK TOOLS API\nIT WILL LOOK LIKE  https://gplinks.in/api?api=6a4cb74d70edd86803333333333a&\nSENT IT TO ME\n\nNOW YOU ARE DONE JUST SEND LINK TO THIS BOT \n\nNOW YOU CAN USE THIS BOT \nTHANKS FOR USING MY BOT \n\n')
