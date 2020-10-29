@@ -24,10 +24,8 @@ def help_command(update, context):
 def auth(update, context):
     keyboard = [
         [
-            InlineKeyboardButton("Option 1", callback_data='1'),
-            InlineKeyboardButton("Option 2", callback_data='2'),
-        ],
-        [InlineKeyboardButton("Option 3", callback_data='3')],
+            InlineKeyboardButton("Autherise me ", url='https://gplinks.in/member/tools/api'),
+        ]
     ]
 
     reply_markup = InlineKeyboardMarkup(keyboard)
