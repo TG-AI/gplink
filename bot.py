@@ -35,7 +35,9 @@ def start(update, context):
 def help_command(update, context):
 
     update.message.reply_text('<b>Hello This Bot Can Short Your Link<\b>\n\nFirst YOU HAVE TO GET YOUR API TOKEN OF GPLINK by using /auth \n\nAFTER THAT COPY THAT LINK FROM GPLINK TOOLS API\nIT WILL LOOK LIKE  https://gplinks.in/api?api=6a4cb74d70edd86803333333333a&\nSENT IT TO ME\n\nNOW YOU ARE DONE JUST SEND LINK TO THIS BOT \n\n')
-         disable_web_page_preview=True, parse_mode=ParseMode.MARKDOWN)
+    disable_web_page_preview=True, 
+    parse_mode=ParseMode.MARKDOWN)
+    
 def auth(update, context):
     keyboard = [
         [
