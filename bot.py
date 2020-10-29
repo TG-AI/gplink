@@ -19,7 +19,7 @@ def start(update, context):
             InlineKeyboardButton("🔖 Projects Channel", url='https://t.me/AI_bot_projects'),
         ],
         [
-            InlineKeyboardButton("🧐 How to use me", url='https://telegra.ph/How-to-use-me=10-29'),
+            InlineKeyboardButton("🧐 How to use me", url='https://telegra.ph/How-to-use-me-10-29'),
             InlineKeyboardButton("👨 Master", url='https://t.me/pppppgame'),
         ],
     ]
