@@ -15,12 +15,12 @@ BOT_TOKEN = environ.get('BOT_TOKEN')
 def start(update, context):
     keyboard = [
         [
-            InlineKeyboardButton("📌  Support Group", url='https://t.me/AI_BOT_HELP'),
-            InlineKeyboardButton("🔖  Projects Channel", url='https://t.me/AI_bot_projects'),
+            InlineKeyboardButton("📌 Support Group", url='https://t.me/AI_BOT_HELP'),
+            InlineKeyboardButton("🔖 Projects Channel", url='https://t.me/AI_bot_projects'),
         ],
         [
-            InlineKeyboardButton("How to use me", callback_data=str(ONE)),
-            InlineKeyboardButton("👨  Master", url='https://t.me/pppppgame'),
+            InlineKeyboardButton("🧐 How to use me", url='https://telegra.ph/How-to-use-me=10-29',
+            InlineKeyboardButton("👨 Master", url='https://t.me/pppppgame'),
         ],
     ]
 
