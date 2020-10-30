@@ -66,7 +66,7 @@ def echo(update, context):
         req = requests.get(f'https://gplinks.in/api?api={gptoken}&url={url_convert}')
         r = json.loads(req.content)
 
-        if r['status'] == 'success 👍':
+        if r['status'] == "success 👍":
             update.message.reply_text(' Status : ' + r['status'])
             update.message.reply_text(' shortenedUrl : ' + r['shortenedUrl'])
         if r['status'] == 'error':
