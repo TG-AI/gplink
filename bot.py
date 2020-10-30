@@ -9,9 +9,6 @@ from gplink_tokens import tokens
 from os import environ
 import aiohttp
 
-ONE = 'hello how are you'
-
-
 BOT_TOKEN = environ.get('BOT_TOKEN')
 def start(update, context):
     keyboard = [
