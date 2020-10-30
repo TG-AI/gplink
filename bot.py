@@ -61,7 +61,7 @@ def echo(update, context):
             gptoken = tokens[chat]
             url_convert = update.message.text
         except:
-            update.message.reply_text("TOKEN NOT FOUND USE /help FOR MORE ")
+            update.message.reply_text("Your api token is missing please autherise me by /auth for using me 🤪")
 
         req = requests.get(f'https://gplinks.in/api?api={gptoken}&url={url_convert}')
         r = json.loads(req.content)
