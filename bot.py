@@ -87,16 +87,16 @@ def main():
     dp.add_handler(CommandHandler("auth", auth))
                               
     dp.add_handler(MessageHandler(Filters.text & ~Filters.command, echo))
-    updater.start_polling()
-
+    updater.start_polling()  
+    updater.idle()
+    
 def unknown(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Sorry, I didn't understand that command.")
 
 unknown_handler = MessageHandler(Filters.command, unknown)
 dispatcher.add_handler(unknown_handler)
     
-    
-    updater.idle()
+      
 
 
 if __name__ == '__main__':
