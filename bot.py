@@ -35,7 +35,7 @@ def start(update, context):
     
 def help_command(update, context):
 
-    update.message.reply_text('<b>Hello This Bot Can Short Your Link<\b>\n\nFirst YOU HAVE TO GET YOUR API TOKEN OF GPLINK by using /auth \n\nAFTER THAT COPY THAT LINK FROM GPLINK TOOLS API\nIT WILL LOOK LIKE  https://gplinks.in/api?api=6a4cb74d70edd86803333333333a&\nSENT IT TO ME\n\nNOW YOU ARE DONE JUST SEND LINK TO THIS BOT \n\n')
+    update.message.reply_text('Hello\n\nFirst YOU HAVE TO GET YOUR API TOKEN OF GPLINK by using /auth \n\nafter that copy that link from GPLINK TOOLS API\n\nit will look like this 👉 https://gplinks.in/api?api=6a4cb74d70edd33a&\nsent it to me\n\n👍 now you are done just sent any link to me')
     
 def auth(update, context):
     keyboard = [
@@ -58,27 +58,27 @@ def echo(update, context):
         tokens[chat] = str(token)
         with open('gplink_tokens.py', 'w') as file:
             file.write('tokens = ' + str(tokens))
-            update.message.reply_text(f'Your CHAT_ID : {chat} IS REGISTERED WITH GPLINK API TOKEN : {token}\n\nIF YOU SEND ME AGAIN A DIFFRENT API URL IT WIL BE RE ASSIGNE TO YOUR CHAT_ID')
+            update.message.reply_text(f'🎉 congratulations \n\nYour 😇 CHAT_ID : {chat} IS REGISTERED WITH GPLINK API TOKEN : {token}\n\nIf you sent me a different API URL I will reassign your GPLINK API TOKEN')
     elif 'https://gplinks.in/api?api=' not in str(update.message.text) and (re.search('^http://.*', str(update.message.text)) or re.search('^https://.*', str(update.message.text))):
         try:
             chat = str(update.message.chat_id)
             gptoken = tokens[chat]
             url_convert = update.message.text
         except:
-            update.message.reply_text("TOKEN NOT FOUND USE /help FOR MORE ")
+            update.message.reply_text("Your api token is missing please autherise me by /auth for using me 🤪")
 
         req = requests.get(f'https://gplinks.in/api?api={gptoken}&url={url_convert}')
         r = json.loads(req.content)
 
-        if r['status'] == 'success':
+        if r['status'] == 'success 👍':
             update.message.reply_text(' Status : ' + r['status'])
             update.message.reply_text(' shortenedUrl : ' + r['shortenedUrl'])
-        if r['status'] == 'error':
+        if r['status'] == 'Sorry something went wrong pleas try again 🙏':
             update.message.reply_text(' Error : ' + r['message'])
                      
             
 def unknown(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="Sorry, I didn't understand that command.")
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Please dont spam here\ni will ban you")
 
 unknown_handler = MessageHandler(Filters.command, unknown, echo)            
             
