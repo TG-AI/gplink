@@ -11,9 +11,21 @@ import aiohttp
 
 BOT_TOKEN = environ.get('BOT_TOKEN')
 def start(update, context):
+    keyboard = [
+        [
+            InlineKeyboardButton("📌 Support Group", url='https://t.me/AI_BOT_HELP'),
+            InlineKeyboardButton("🔖 Projects Channel", url='https://t.me/AI_bot_projects'),
+        ],
+        [
+            InlineKeyboardButton("🧐 How to use me", url='https://telegra.ph/How-to-use-me-10-29'),
+            InlineKeyboardButton("👨 Master", url='https://t.me/pppppgame'),
+        ],
+    ]
+
+    reply_markup = InlineKeyboardMarkup(keyboard)
 
     update.message.reply_text(
-        f'Hi! Mr {update.message.from_user.first_name}\n\nSend Me Your Link Fr Short Your Link\n\nFOR MORE TYPE /help \n\n©️ @AI_bot_projects')
+        f"Hi! Mr {update.message.from_user.first_name}\n\nI'm GPlink bot. Just send me link and get short link\n\n/help for more help\n\nyou have to autherise me to use this bot use /auth\nyour api token is safe with me I will not share it \n\nany doubt ask here 👉 @AI_BOT_HELP\n\n©️ @AI_bot_projects", reply_markup=reply_markup)
 
 
 def help_command(update, context):
