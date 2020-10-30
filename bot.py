@@ -67,10 +67,10 @@ def echo(update, context):
         r = json.loads(req.content)
 
         if r['status'] == 'success' :
-            update.message.reply_text(' Status : 👍' + r['status'])
+            update.message.reply_text(' Status : ' + r['status'] + ' 👍')
             update.message.reply_text(' shortenedUrl : ' + r['shortenedUrl'])
         if r['status'] == 'error':
-            update.message.reply_text(' Error : ' + r['message'])
+            update.message.reply_text(' Error : ' + r['message'] + ' 👎')
 
 
 def main():
