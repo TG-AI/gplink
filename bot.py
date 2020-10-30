@@ -76,11 +76,12 @@ def echo(update, context):
         if r['status'] == 'error':
             update.message.reply_text(' Error : ' + r['message'])
             
+    dp = updater.dispatcher
 def eco(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
 
 echo_handler = MessageHandler(Filters.text & (~Filters.command), echo)
-dispatcher.add_handler(echo_handler)            
+     db.add_handler(echo_handler)            
             
 def unknown(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Sorry, I didn't understand that command.")
