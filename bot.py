@@ -75,18 +75,12 @@ def echo(update, context):
             update.message.reply_text(' shortenedUrl : ' + r['shortenedUrl'])
         if r['status'] == 'error':
             update.message.reply_text(' Error : ' + r['message'])
-            
-    dp = updater.dispatcher
-def eco(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
-
-echo_handler = MessageHandler(Filters.text & (~Filters.command), echo)
-     db.add_handler(echo_handler)            
+                     
             
 def unknown(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Sorry, I didn't understand that command.")
 
-unknown_handler = MessageHandler(Filters.command, unknown)            
+unknown_handler = MessageHandler(Filters.command, unknown, echo)            
             
 def main():
     updater = Updater(
@@ -97,7 +91,7 @@ def main():
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help_command))
     dp.add_handler(CommandHandler("auth", auth))
-    dp.add_handler(unknown_handler)
+    dp.add_handler(unknown_handler(Filters.text & ~Filters.command, echo))
                               
     dp.add_handler(MessageHandler(Filters.text & ~Filters.command, echo))
     updater.start_polling()  
