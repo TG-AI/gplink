@@ -71,6 +71,12 @@ def echo(update, context):
             update.message.reply_text(' shortenedUrl : ' + r['shortenedUrl'])
         if r['status'] == 'error':
             update.message.reply_text(' Error : ' + r['message'] + ' 👎')
+            
+            
+def unknown(update, context):
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Please dont spam here")
+
+unknown_handler = MessageHandler(Filters.command, unknown)          
 
 
 def main():
@@ -82,6 +88,7 @@ def main():
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help_command))
     dp.add_handler(CommandHandler("auth", auth))
+    dp.add_handler(unknown_handler)  
 
     dp.add_handler(MessageHandler(Filters.text & ~Filters.command, echo))
     updater.start_polling()
