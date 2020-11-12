@@ -38,7 +38,7 @@ def auth(update, context):
     keyboard = [
         [
             InlineKeyboardButton("Autherise me ", url='https://gplinks.in/member/tools/api'),
-        ]
+        ],
     ]
 
     reply_markup = InlineKeyboardMarkup(keyboard)
