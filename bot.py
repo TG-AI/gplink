@@ -129,7 +129,7 @@ def main():
     dp.add_handler(CommandHandler("help", help_command))
     dp.add_handler(CommandHandler("auth", auth))
     dp.add_handler(MessageHandler(Filters.text & ~Filters.command, echo))
-    dp.add_handler(MessageHandler(Filters.text, eco1))
+    dp.add_handler(MessageHandler(Filters.text & ~Filters.command, eco1))
     updater.start_polling()  
     updater.idle() 
 
