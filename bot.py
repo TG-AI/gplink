@@ -47,24 +47,23 @@ def auth(update: Update, context: CallbackContext):
 
     
 def echo(update: Update, context: CallbackContext):
-    
     if 'https://golinksrt.xyz/api?api=' in str(update.message.text):
         chat = str(update.message.chat_id)
         url = update.message.text.replace("https://golinksrt.xyz/api?api=", "")
-        token = re.sub("&.*", "", url)
-        tokensg[chat] = str(token)
+        tokeno = re.sub("&.*", "", url)
+        tokens[chat] = str(tokeno)
         with open('golink_tokens.py', 'w') as file:
-            file.write('tokens = ' + str(tokensg))
-            update.message.reply_text(f'🎉 congratulations \n\nYour 😇 CHAT_ID : {chat} IS REGISTERED WITH GOLINK API TOKEN : {token}\n\nIf you sent me a different API URL I will reassign your GOLINK API TOKEN')
+            file.write('tokens = ' + str(tokens))
+            update.message.reply_text(f'🎉 congratulations \n\nYour 😇 CHAT_ID : {chat} IS REGISTERED WITH GOLINK API TOKEN : {tokeno}\n\nIf you sent me a different API URL I will reassign your GOLINK API TOKEN')
    
     elif 'https://gplinks.in/api?api=' in str(update.message.text):
         chat = str(update.message.chat_id)
         url = update.message.text.replace("https://gplinks.in/api?api=", "")
-        token = re.sub("&.*", "", url)
-        tokensp[chat] = str(token)
+        tokenp = re.sub("&.*", "", url)
+        tokens[chat] = str(tokenp)
         with open('gplink_tokens.py', 'w') as file:
-            file.write('tokens = ' + str(tokensp))
-            update.message.reply_text(f'🎉 congratulations \n\nYour 😇 CHAT_ID : {chat} IS REGISTERED WITH GPLINK API TOKEN : {token}\n\nIf you sent me a different API URL I will reassign your GPLINK API TOKEN')
+            file.write('tokens = ' + str(tokens))
+            update.message.reply_text(f'🎉 congratulations \n\nYour 😇 CHAT_ID : {chat} IS REGISTERED WITH GPLINK API TOKEN : {tokenp}\n\nIf you sent me a different API URL I will reassign your GPLINK API TOKEN')
  
 def eco1(update: Update, context: CallbackContext):    
     
