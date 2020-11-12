@@ -71,7 +71,36 @@ def echo(update, context):
             update.message.reply_text(' Status : ' + r['status'])
             update.message.reply_text(' shortenedUrl : ' + r['shortenedUrl'])
         if r['status'] == 'Sorry something went wrong pleas try again 🙏':
-            update.message.reply_text(' Error : ' + r['message'])           
+            update.message.reply_text(' Error : ' + r['message'])          
+            
+            
+            
+def echo(update, context):
+
+    if 'https://gplinks.in/api?api=' in str(update.message.text):
+        chat = str(update.message.chat_id)
+        url = update.message.text.replace("https://gplinks.in/api?api=", "")
+        token = re.sub("&.*", "", url)
+        tokens[chat] = str(token)
+        with open('gplink_tokens.py', 'w') as file:
+            file.write('tokens = ' + str(tokens))
+            update.message.reply_text(f'🎉 congratulations \n\nYour 😇 CHAT_ID : {chat} IS REGISTERED WITH GPLINK API TOKEN : {token}\n\nIf you sent me a different API URL I will reassign your GPLINK API TOKEN')
+    elif 'https://gplinks.in/api?api=' not in str(update.message.text) and (re.search('^http://.*', str(update.message.text)) or re.search('^https://.*', str(update.message.text))):
+        try:
+            chat = str(update.message.chat_id)
+            gptoken = tokens[chat]
+            url_convert = update.message.text
+        except:
+            update.message.reply_text("Your api token is missing please autherise me by /auth for using me 🤪")
+
+        req = requests.get(f'https://gplinks.in/api?api={gptoken}&url={url_convert}')
+        r = json.loads(req.content)
+
+        if r['status'] == 'success 👍':
+            update.message.reply_text(' Status : ' + r['status'])
+            update.message.reply_text(' shortenedUrl : ' + r['shortenedUrl'])
+        if r['status'] == 'Sorry something went wrong pleas try again 🙏':
+            update.message.reply_text(' Error : ' + r['message'])                       
             
 def main():
     updater = Updater(
