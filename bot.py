@@ -47,7 +47,7 @@ def auth(update: Update, context: CallbackContext):
     update.message.reply_text('please login to your gplink account by pressing the button below and copy paste the api url here\n\neg: https://gplinks.in/api?api=6a4cb74d70edd86803333333333a&', reply_markup=reply_markup)
 
     
-def echo(update: Update, context: CallbackContext):
+def ech(update: Update, context: CallbackContext):
     if 'https://golinksrt.xyz/api?api=' in str(update.message.text):
         chat = str(update.message.chat_id)
         url = update.message.text.replace("https://golinksrt.xyz/api?api=", "")
@@ -128,7 +128,7 @@ def main():
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help_command))
     dp.add_handler(CommandHandler("auth", auth))
-    dp.add_handler(MessageHandler(Filters.text & ~Filters.command, echo))
+    dp.add_handler(MessageHandler(Filters.text & ~Filters.command, ech))
     dp.add_handler(MessageHandler(Filters.text & ~Filters.command, eco1))
     updater.start_polling()  
     updater.idle() 
