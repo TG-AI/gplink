@@ -51,18 +51,18 @@ def echo(update: Update, context: CallbackContext):
         chat = str(update.message.chat_id)
         url = update.message.text.replace("https://golinksrt.xyz/api?api=", "")
         tokeno = re.sub("&.*", "", url)
-        tokens[chat] = str(tokeno)
+        tokensg[chat] = str(tokeno)
         with open('golink_tokens.py', 'w') as file:
-            file.write('tokens = ' + str(tokens))
+            file.write('tokens = ' + str(tokensg))
             update.message.reply_text(f'🎉 congratulations \n\nYour 😇 CHAT_ID : {chat} IS REGISTERED WITH GOLINK API TOKEN : {tokeno}\n\nIf you sent me a different API URL I will reassign your GOLINK API TOKEN')
    
     elif 'https://gplinks.in/api?api=' in str(update.message.text):
         chat = str(update.message.chat_id)
         url = update.message.text.replace("https://gplinks.in/api?api=", "")
         tokenp = re.sub("&.*", "", url)
-        tokens[chat] = str(tokenp)
+        tokensp[chat] = str(tokenp)
         with open('gplink_tokens.py', 'w') as file:
-            file.write('tokens = ' + str(tokens))
+            file.write('tokens = ' + str(tokensp))
             update.message.reply_text(f'🎉 congratulations \n\nYour 😇 CHAT_ID : {chat} IS REGISTERED WITH GPLINK API TOKEN : {tokenp}\n\nIf you sent me a different API URL I will reassign your GPLINK API TOKEN')
  
 def eco1(update: Update, context: CallbackContext):    
