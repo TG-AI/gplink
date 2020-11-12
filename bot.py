@@ -66,7 +66,7 @@ def echo(update, context):
             file.write('tokens = ' + str(tokensp))
             update.message.reply_text(f'🎉 congratulations \n\nYour 😇 CHAT_ID : {chat} IS REGISTERED WITH GPLINK API TOKEN : {token}\n\nIf you sent me a different API URL I will reassign your GPLINK API TOKEN')
  
-def eco1(update: tg.Update, context: tg_ext.CallbackContext):    
+def eco1(update: Update, context: CallbackContext):    
     
    if 'https://golinksrt.xyz/api?api=' or 'https://gplinks.in/api?api=' not in str(update.message.text) and (re.search('^http://.*', str(update.message.text)) or re.search('^https://.*', str(update.message.text))):
         
@@ -81,7 +81,7 @@ def eco1(update: tg.Update, context: tg_ext.CallbackContext):
 
     update.message.reply_text('please login to your gplink account by pressing the button below and copy paste the api url here\n\neg: https://gplinks.in/api?api=6a4cb74d70edd86803333333333a&', reply_markup=reply_markup)
 
-def golink(update: tg.Update, context: tg_ext.CallbackContext):
+def golink(update: Update, context: CallbackContext):
     
        try:
             chat = str(update.message.chat_id)
@@ -101,7 +101,7 @@ def golink(update: tg.Update, context: tg_ext.CallbackContext):
             
             
             
-def gplink(update: tg.Update, context: tg_ext.CallbackContext):
+def gplink(update: Update, context: CallbackContext):
 
        try:
             chat = str(update.message.chat_id)
