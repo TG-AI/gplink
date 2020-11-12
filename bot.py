@@ -68,9 +68,9 @@ def echo(update, context):
  
 def eco1(update: tg.Update, context: tg_ext.CallbackContext):    
     
-     if 'https://golinksrt.xyz/api?api=' or 'https://gplinks.in/api?api=' not in str(update.message.text) and (re.search('^http://.*', str(update.message.text)) or re.search('^https://.*', str(update.message.text))):
+   if 'https://golinksrt.xyz/api?api=' or 'https://gplinks.in/api?api=' not in str(update.message.text) and (re.search('^http://.*', str(update.message.text)) or re.search('^https://.*', str(update.message.text))):
         
-        keyboard = [
+    keyboard = [
             [
                 InlineKeyboardButton("gp link", callback_data=(gplink)),
                 InlineKeyboardButton("go link", callback_data=(golink)),
