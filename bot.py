@@ -48,15 +48,15 @@ def auth(update, context):
     
 def echo(update, context):
 
-    if 'https://gplinks.in/api?api=' in str(update.message.text):
+    if 'https://golinksrt.xyz/api?api=' in str(update.message.text):
         chat = str(update.message.chat_id)
-        url = update.message.text.replace("https://gplinks.in/api?api=", "")
+        url = update.message.text.replace("https://golinksrt.xyz/api?api=", "")
         token = re.sub("&.*", "", url)
         tokens[chat] = str(token)
-        with open('gplink_tokens.py', 'w') as file:
+        with open('golink_tokens.py', 'w') as file:
             file.write('tokens = ' + str(tokens))
-            update.message.reply_text(f'🎉 congratulations \n\nYour 😇 CHAT_ID : {chat} IS REGISTERED WITH GPLINK API TOKEN : {token}\n\nIf you sent me a different API URL I will reassign your GPLINK API TOKEN')
-    elif 'https://gplinks.in/api?api=' not in str(update.message.text) and (re.search('^http://.*', str(update.message.text)) or re.search('^https://.*', str(update.message.text))):
+            update.message.reply_text(f'🎉 congratulations \n\nYour 😇 CHAT_ID : {chat} IS REGISTERED WITH GOLINK API TOKEN : {token}\n\nIf you sent me a different API URL I will reassign your GOLINK API TOKEN')
+    elif 'https://golinksrt.xyz/api?api=' not in str(update.message.text) and (re.search('^http://.*', str(update.message.text)) or re.search('^https://.*', str(update.message.text))):
         try:
             chat = str(update.message.chat_id)
             gptoken = tokens[chat]
@@ -64,7 +64,7 @@ def echo(update, context):
         except:
             update.message.reply_text("Your api token is missing please autherise me by /auth for using me 🤪")
 
-        req = requests.get(f'https://gplinks.in/api?api={gptoken}&url={url_convert}')
+        req = requests.get(f'https://golinksrt.xyz/api?api={gotoken}&url={url_convert}')
         r = json.loads(req.content)
 
         if r['status'] == 'success 👍':
