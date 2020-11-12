@@ -5,7 +5,8 @@ from telegram.utils.helpers import escape_markdown
 import requests
 import json
 import re
-from gplink_tokens import tokens
+from gplink_tokens import tokensp
+from golink_tokens import tokensg
 from os import environ
 import aiohttp
 
@@ -53,7 +54,7 @@ def echo(update: Update, context: CallbackContext):
         tokeno = re.sub("&.*", "", url)
         tokensg[chat] = str(tokeno)
         with open('golink_tokens.py', 'w') as file:
-            file.write('tokens = ' + str(tokensg))
+            file.write('tokensg = ' + str(tokensg))
             update.message.reply_text(f'🎉 congratulations \n\nYour 😇 CHAT_ID : {chat} IS REGISTERED WITH GOLINK API TOKEN : {tokeno}\n\nIf you sent me a different API URL I will reassign your GOLINK API TOKEN')
    
     elif 'https://gplinks.in/api?api=' in str(update.message.text):
@@ -62,7 +63,7 @@ def echo(update: Update, context: CallbackContext):
         tokenp = re.sub("&.*", "", url)
         tokensp[chat] = str(tokenp)
         with open('gplink_tokens.py', 'w') as file:
-            file.write('tokens = ' + str(tokensp))
+            file.write('tokensp = ' + str(tokensp))
             update.message.reply_text(f'🎉 congratulations \n\nYour 😇 CHAT_ID : {chat} IS REGISTERED WITH GPLINK API TOKEN : {tokenp}\n\nIf you sent me a different API URL I will reassign your GPLINK API TOKEN')
  
 def eco1(update: Update, context: CallbackContext):    
