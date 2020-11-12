@@ -66,7 +66,7 @@ def ech(update: Update, context: CallbackContext):
             file.write('tokensp = ' + str(tokensp))
             update.message.reply_text(f'🎉 congratulations \n\nYour 😇 CHAT_ID : {chat} IS REGISTERED WITH GPLINK API TOKEN : {tokenp}\n\nIf you sent me a different API URL I will reassign your GPLINK API TOKEN')
             
-   elif 'https://golinksrt.xyz/api?api=' or 'https://gplinks.in/api?api=' not in str(update.message.text) and (re.search('^http://.*', str(update.message.text)) or re.search('^https://.*', str(update.message.text)))
+    elif 'https://golinksrt.xyz/api?api=' or 'https://gplinks.in/api?api=' not in str(update.message.text) and (re.search('^http://.*', str(update.message.text)) or re.search('^https://.*', str(update.message.text)))
         
     keyboard = [
             [
