@@ -1,6 +1,6 @@
 # import pyshorteners
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, update
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler, CallbackContext
 from telegram.utils.helpers import escape_markdown
 import requests
 import json
@@ -10,7 +10,7 @@ from os import environ
 import aiohttp
 
 BOT_TOKEN = environ.get('BOT_TOKEN')
-def start(update, context):
+def start(update: Update, context: CallbackContext):
     keyboard = [
         [
             InlineKeyboardButton("📌 Support Group", url='https://t.me/AI_BOT_HELP'),
@@ -30,11 +30,11 @@ def start(update, context):
 
     
     
-def help_command(update, context):
+def help_command(update: Update, context: CallbackContext):
 
     update.message.reply_text('Hello\n\nFirst you have to get your API TOKEN OF GPLINK by using /auth \n\nafter that copy that link from GPLINK TOOLS API\n\nit will look like this 👉 https://gplinks.in/api?api=6a4cb74d70edd33a&\nsent it to me\n\n👍 now you are done just sent any link to me')
     
-def auth(update, context):
+def auth(update: Update, context: CallbackContext):
     keyboard = [
         [
             InlineKeyboardButton("Autherise me ", url='https://gplinks.in/member/tools/api'),
@@ -46,7 +46,7 @@ def auth(update, context):
     update.message.reply_text('please login to your gplink account by pressing the button below and copy paste the api url here\n\neg: https://gplinks.in/api?api=6a4cb74d70edd86803333333333a&', reply_markup=reply_markup)
 
     
-def echo(update, context):
+def echo(update: Update, context: CallbackContext):
     
     if 'https://golinksrt.xyz/api?api=' in str(update.message.text):
         chat = str(update.message.chat_id)
