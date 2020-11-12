@@ -74,7 +74,7 @@ def eco1(update: tg.Update, context: tg_ext.CallbackContext):
             [
                 InlineKeyboardButton("gp link", callback_data=(gplink)),
                 InlineKeyboardButton("go link", callback_data=(golink)),
-            ]
+            ],
         ]
 
     reply_markup = InlineKeyboardMarkup(keyboard)
