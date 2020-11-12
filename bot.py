@@ -47,7 +47,7 @@ def auth(update, context):
 
     
 def echo(update, context):
-
+    
     if 'https://golinksrt.xyz/api?api=' in str(update.message.text):
         chat = str(update.message.chat_id)
         url = update.message.text.replace("https://golinksrt.xyz/api?api=", "")
@@ -56,7 +56,30 @@ def echo(update, context):
         with open('golink_tokens.py', 'w') as file:
             file.write('tokens = ' + str(tokens))
             update.message.reply_text(f'🎉 congratulations \n\nYour 😇 CHAT_ID : {chat} IS REGISTERED WITH GOLINK API TOKEN : {token}\n\nIf you sent me a different API URL I will reassign your GOLINK API TOKEN')
-    elif 'https://golinksrt.xyz/api?api=' not in str(update.message.text) and (re.search('^http://.*', str(update.message.text)) or re.search('^https://.*', str(update.message.text))):
+   
+    if 'https://gplinks.in/api?api=' in str(update.message.text):
+        chat = str(update.message.chat_id)
+        url = update.message.text.replace("https://gplinks.in/api?api=", "")
+        token = re.sub("&.*", "", url)
+        tokens[chat] = str(token)
+        with open('gplink_tokens.py', 'w') as file:
+            file.write('tokens = ' + str(tokens))
+            update.message.reply_text(f'🎉 congratulations \n\nYour 😇 CHAT_ID : {chat} IS REGISTERED WITH GPLINK API TOKEN : {token}\n\nIf you sent me a different API URL I will reassign your GPLINK API TOKEN')
+ 
+    
+     if 'https://golinksrt.xyz/api?api=' or 'https://gplinks.in/api?api=' not in str(update.message.text) and (re.search('^http://.*', str(update.message.text)) or re.search('^https://.*', str(update.message.text))):
+        
+        keyboard = [
+        [
+            InlineKeyboardButton("Autherise me ", url='https://gplinks.in/member/tools/api'),
+        ]
+    ]
+
+    reply_markup = InlineKeyboardMarkup(keyboard)
+
+    update.message.reply_text('please login to your gplink account by pressing the button below and copy paste the api url here\n\neg: https://gplinks.in/api?api=6a4cb74d70edd86803333333333a&', reply_markup=reply_markup)
+
+
         try:
             chat = str(update.message.chat_id)
             gptoken = tokens[chat]
