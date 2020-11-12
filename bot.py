@@ -107,17 +107,17 @@ def gplink(update: tg.Update, context: tg_ext.CallbackContext):
             chat = str(update.message.chat_id)
             gptoken = tokensp[chat]
             url_convert = update.message.text
-        except:
-            update.message.reply_text("Your api token is missing please autherise me by /auth for using me 🤪")
+       except:
+           update.message.reply_text("Your api token is missing please autherise me by /auth for using me 🤪")
 
-        req = requests.get(f'https://gplinks.in/api?api={gptoken}&url={url_convert}')
-        r = json.loads(req.content)
+       req = requests.get(f'https://gplinks.in/api?api={gptoken}&url={url_convert}')
+       r = json.loads(req.content)
 
-        if r['status'] == 'success 👍':
-            update.message.reply_text(' Status : ' + r['status'])
-            update.message.reply_text(' shortenedUrl : ' + r['shortenedUrl'])
-        if r['status'] == 'Sorry something went wrong pleas try again 🙏':
-            update.message.reply_text(' Error : ' + r['message'])                       
+       if r['status'] == 'success 👍':
+           update.message.reply_text(' Status : ' + r['status'])
+           update.message.reply_text(' shortenedUrl : ' + r['shortenedUrl'])
+       if r['status'] == 'Sorry something went wrong pleas try again 🙏':
+           update.message.reply_text(' Error : ' + r['message'])                       
             
 def main():
     updater = Updater(
