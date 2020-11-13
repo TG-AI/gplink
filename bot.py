@@ -65,7 +65,9 @@ def ech(update: Update, context: CallbackContext):
         with open('gplink_tokens.py', 'w') as file:
             file.write('tokensp = ' + str(tokensp))
             update.message.reply_text(f'🎉 congratulations \n\nYour 😇 CHAT_ID : {chat} IS REGISTERED WITH GPLINK API TOKEN : {tokenp}\n\nIf you sent me a different API URL I will reassign your GPLINK API TOKEN')
-            
+ 
+def ec(update: Update, context: CallbackContext):
+    
     elif 'https://golinksrt.xyz/api?api=' not in str(update.message.text) and 'https://gplinks.in/api?api=' not in str(update.message.text) and (re.search('^http://.*', str(update.message.text)) or re.search('^https://.*', str(update.message.text))):
         
      keyboard = [
@@ -77,7 +79,7 @@ def ech(update: Update, context: CallbackContext):
 
      reply_markup = InlineKeyboardMarkup(keyboard)
 
-     update.message.reply_text('please login to your gplink account by pressing the button below and copy paste the api url here\n\neg: https://gplinks.in/api?api=6a4cb74d70edd86803333333333a&', reply_markup=reply_markup)
+     update.message.reply_text('plea', reply_markup=reply_markup)
 
 def golink(update: Update, context: CallbackContext):
     
@@ -127,6 +129,7 @@ def main():
     dp.add_handler(CommandHandler("help", help_command))
     dp.add_handler(CommandHandler("auth", auth))
     dp.add_handler(MessageHandler(Filters.text & ~Filters.command, ech))
+    dp.add_handler(MessageHandler(Filters.text & ~Filters.command, ec))
     updater.start_polling()  
     updater.idle() 
 
