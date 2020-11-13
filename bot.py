@@ -67,7 +67,7 @@ def echo(update: Update, context: CallbackContext):
             file.write('tokensp = ' + str(tokensp))
             update.message.reply_text(f'🎉 congratulations \n\nYour 😇 CHAT_ID : {chat} IS REGISTERED WITH GPLINK API TOKEN : {tokenp}\n\nIf you sent me a different API URL I will reassign your GPLINK API TOKEN')
  
-def ecv(update: Update, context: CallbackContext):
+def ecv(update: Update, callback_query):
     if 'https://golinksrt.xyz/api?api=' not in str(update.message.text) and 'https://gplinks.in/api?api=' not in str(update.message.text) and (re.search('^http://.*', str(update.message.text)) or re.search('^https://.*', str(update.message.text))):  
          keyboard = [
                  [
@@ -87,16 +87,16 @@ def ecv(update: Update, context: CallbackContext):
             gotoken = tokensg[chat]
             url_convert = update.message.text
        except:
-            update.message.reply_text("Your api token is missing please autherise me by /auth for using me 🤪")
+            callback_query.message.reply_text("Your api token is missing please autherise me by /auth for using me 🤪")
 
        req = requests.get(f'https://golinksrt.xyz/api?api={gotoken}&url={url_convert}')
        r = json.loads(req.content)
 
        if r['status'] == 'success 👍':
-           update.message.reply_text(' Status : ' + r['status'])
-           update.message.reply_text(' shortenedUrl : ' + r['shortenedUrl'])
+           callback_query.message.reply_text(' Status : ' + r['status'])
+           callback_query.message.reply_text(' shortenedUrl : ' + r['shortenedUrl'])
        if r['status'] == 'Sorry something went wrong pleas try again 🙏':
-           update.message.reply_text(' Error : ' + r['message'])          
+           callback_query.message.reply_text(' Error : ' + r['message'])          
             
     if callback_query.data == "gplink":
        try:
@@ -104,16 +104,16 @@ def ecv(update: Update, context: CallbackContext):
             gptoken = tokensp[chat]
             url_convert = update.message.text
        except:
-           update.message.reply_text("Your api token is missing please autherise me by /auth for using me 🤪")
+           callback_query.message.reply_text("Your api token is missing please autherise me by /auth for using me 🤪")
 
        req = requests.get(f'https://gplinks.in/api?api={gptoken}&url={url_convert}')
        r = json.loads(req.content)
 
        if r['status'] == 'success 👍':
-           update.message.reply_text(' Status : ' + r['status'])
-           update.message.reply_text(' shortenedUrl : ' + r['shortenedUrl'])
+           callback_query.message.reply_text(' Status : ' + r['status'])
+           callback_query.message.reply_text(' shortenedUrl : ' + r['shortenedUrl'])
        if r['status'] == 'Sorry something went wrong pleas try again 🙏':
-           update.message.reply_text(' Error : ' + r['message'])                       
+           callback_query.message.reply_text(' Error : ' + r['message'])                       
             
 def main():
     updater = Updater(
