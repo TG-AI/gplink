@@ -127,7 +127,7 @@ def main():
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help_command))
     dp.add_handler(CommandHandler("auth", auth))
-    dp.add_handler(MessageHandler("goapi", ech))
+    dp.add_handler(CommandHandler("goapi", ech))
     dp.add_handler(CommandHandler("gpapi", echo))
     dp.add_handler(MessageHandler(Filters.text & ~Filters.command, ecv))
     updater.start_polling()  
