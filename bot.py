@@ -82,6 +82,7 @@ def ecv(update: Update, context: CallbackContext):
 
 def golink(update: Update, context: CallbackContext):
     
+    if callback_query.data == golink
        try:
             chat = str(update.message.chat_id)
             gotoken = tokensg[chat]
@@ -101,7 +102,7 @@ def golink(update: Update, context: CallbackContext):
             
             
 def gplink(update: Update, context: CallbackContext):
-
+    if callback_query.data == gplink
        try:
             chat = str(update.message.chat_id)
             gptoken = tokensp[chat]
