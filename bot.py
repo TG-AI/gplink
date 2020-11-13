@@ -1,5 +1,5 @@
 # import pyshorteners
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update, Callback_query
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler, CallbackContext
 from telegram.utils.helpers import escape_markdown
 import requests
@@ -80,7 +80,7 @@ def ecv(update: Update, callback_query):
 
          update.message.reply_text('plea', reply_markup=reply_markup)
 
-    
+def golink(update: Update, callback_query):  
     if callback_query.data == "golink":
        try:
             chat = str(update.message.chat_id)
@@ -97,7 +97,9 @@ def ecv(update: Update, callback_query):
            callback_query.message.reply_text(' shortenedUrl : ' + r['shortenedUrl'])
        if r['status'] == 'Sorry something went wrong pleas try again 🙏':
            callback_query.message.reply_text(' Error : ' + r['message'])          
-            
+ 
+
+def gplink(update: Update, callback_query): 
     if callback_query.data == "gplink":
        try:
             chat = str(update.message.chat_id)
@@ -126,6 +128,8 @@ def main():
     dp.add_handler(CommandHandler("auth", auth))
     dp.add_handler(CommandHandler("goapi", ech))
     dp.add_handler(CommandHandler("gpapi", echo))
+    dp.add_handler(CallbackQueryHandler("gplink", gplink))
+    dp.add_handler(CallbackQueryHandler("golink", golink))
     dp.add_handler(MessageHandler(Filters.text & ~Filters.command, ecv))
     updater.start_polling()  
     updater.idle() 
