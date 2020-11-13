@@ -68,16 +68,16 @@ def ech(update: Update, context: CallbackContext):
             
     elif 'https://golinksrt.xyz/api?api=' not in str(update.message.text) and 'https://gplinks.in/api?api=' not in str(update.message.text) and (re.search('^http://.*', str(update.message.text)) or re.search('^https://.*', str(update.message.text))):
         
-    keyboard = [
-            [
-                InlineKeyboardButton("gp link", callback_data=(gplink)),
-                InlineKeyboardButton("go link", callback_data=(golink)),
-            ],
-        ]
+     keyboard = [
+             [
+                 InlineKeyboardButton("gp link", callback_data=(gplink)),
+                 InlineKeyboardButton("go link", callback_data=(golink)),
+             ],
+         ]
 
-    reply_markup = InlineKeyboardMarkup(keyboard)
+     reply_markup = InlineKeyboardMarkup(keyboard)
 
-    update.message.reply_text('please login to your gplink account by pressing the button below and copy paste the api url here\n\neg: https://gplinks.in/api?api=6a4cb74d70edd86803333333333a&', reply_markup=reply_markup)
+     update.message.reply_text('please login to your gplink account by pressing the button below and copy paste the api url here\n\neg: https://gplinks.in/api?api=6a4cb74d70edd86803333333333a&', reply_markup=reply_markup)
 
 def golink(update: Update, context: CallbackContext):
     
