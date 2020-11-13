@@ -67,11 +67,8 @@ def echo(update: Update, context: CallbackContext):
             file.write('tokensp = ' + str(tokensp))
             update.message.reply_text(f'🎉 congratulations \n\nYour 😇 CHAT_ID : {chat} IS REGISTERED WITH GPLINK API TOKEN : {tokenp}\n\nIf you sent me a different API URL I will reassign your GPLINK API TOKEN')
  
-def ec(update: Update, context: CallbackContext):
-    
-    if 'https://golinksrt.xyz/api?api=' not in str(update.message.text) and 'https://gplinks.in/api?api=' not in str(update.message.text) and (re.search('^http://.*', str(update.message.text)) or re.search('^https://.*', str(update.message.text))):
-      
-      try:   
+def ecv(update: Update, context: CallbackContext):
+    if 'https://golinksrt.xyz/api?api=' not in str(update.message.text) and 'https://gplinks.in/api?api=' not in str(update.message.text) and (re.search('^http://.*', str(update.message.text)) or re.search('^https://.*', str(update.message.text))):  
          keyboard = [
                  [
                      InlineKeyboardButton("gp link", callback_data=(gplink)),
@@ -130,9 +127,9 @@ def main():
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help_command))
     dp.add_handler(CommandHandler("auth", auth))
-    dp.add_handler(MessageHandler(goapi, ech))
+    dp.add_handler(MessageHandler("goapi", ech))
     dp.add_handler(CommandHandler("gpapi", echo))
-    dp.add_handler(MessageHandler(Filters.text & ~Filters.command, ec))
+    dp.add_handler(MessageHandler(Filters.text & ~Filters.command, ecv))
     updater.start_polling()  
     updater.idle() 
 
