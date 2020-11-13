@@ -80,7 +80,6 @@ def ecv(update: Update, context: CallbackContext):
 
          update.message.reply_text('plea', reply_markup=reply_markup)
 
-def golink(update: Update, context: CallbackContext):
     
     if callback_query.data == "golink":
        try:
@@ -99,9 +98,6 @@ def golink(update: Update, context: CallbackContext):
        if r['status'] == 'Sorry something went wrong pleas try again 🙏':
            update.message.reply_text(' Error : ' + r['message'])          
             
-            
-            
-def gplink(update: Update, context: CallbackContext):
     if callback_query.data == "gplink":
        try:
             chat = str(update.message.chat_id)
