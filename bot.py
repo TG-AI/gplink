@@ -68,18 +68,18 @@ def ech(update: Update, context: CallbackContext):
  
 def ec(update: Update, context: CallbackContext):
     
-    elif 'https://golinksrt.xyz/api?api=' not in str(update.message.text) and 'https://gplinks.in/api?api=' not in str(update.message.text) and (re.search('^http://.*', str(update.message.text)) or re.search('^https://.*', str(update.message.text))):
-        
-     keyboard = [
-             [
-                 InlineKeyboardButton("gp link", callback_data=(gplink)),
-                 InlineKeyboardButton("go link", callback_data=(golink)),
-             ],
-         ]
+    if 'https://golinksrt.xyz/api?api=' not in str(update.message.text) and 'https://gplinks.in/api?api=' not in str(update.message.text) and (re.search('^http://.*', str(update.message.text)) or re.search('^https://.*', str(update.message.text))):
+     try:   
+       keyboard = [
+               [
+                   InlineKeyboardButton("gp link", callback_data=(gplink)),
+                   InlineKeyboardButton("go link", callback_data=(golink)),
+               ],
+           ]
 
-     reply_markup = InlineKeyboardMarkup(keyboard)
+       reply_markup = InlineKeyboardMarkup(keyboard)
 
-     update.message.reply_text('plea', reply_markup=reply_markup)
+       update.message.reply_text('plea', reply_markup=reply_markup)
 
 def golink(update: Update, context: CallbackContext):
     
