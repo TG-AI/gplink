@@ -56,8 +56,9 @@ def ech(update: Update, context: CallbackContext):
         with open('golink_tokens.py', 'w') as file:
             file.write('tokensg = ' + str(tokensg))
             update.message.reply_text(f'🎉 congratulations \n\nYour 😇 CHAT_ID : {chat} IS REGISTERED WITH GOLINK API TOKEN : {tokeno}\n\nIf you sent me a different API URL I will reassign your GOLINK API TOKEN')
-   
-    elif 'https://gplinks.in/api?api=' in str(update.message.text):
+ 
+def echo(update: Update, context: CallbackContext):
+    if 'https://gplinks.in/api?api=' in str(update.message.text):
         chat = str(update.message.chat_id)
         url = update.message.text.replace("https://gplinks.in/api?api=", "")
         tokenp = re.sub("&.*", "", url)
@@ -129,7 +130,8 @@ def main():
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help_command))
     dp.add_handler(CommandHandler("auth", auth))
-    dp.add_handler(MessageHandler(Filters.text & ~Filters.command, ech))
+    dp.add_handler(MessageHandler(goapi, ech))
+    dp.add_handler(CommandHandler("gpapi", echo))
     dp.add_handler(MessageHandler(Filters.text & ~Filters.command, ec))
     updater.start_polling()  
     updater.idle() 
