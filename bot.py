@@ -50,7 +50,7 @@ def auth(update: Update, context: CallbackContext):
 def ech(update: Update, context: CallbackContext):
     if 'https://golinksrt.xyz/api?api=' in str(update.message.text):
         chat = str(update.message.chat_id)
-        url = update.message.text.replace("https://golinksrt.xyz/api?api=", "")
+        url = update.message.text.replace("/goapi https://golinksrt.xyz/api?api=", "")
         tokeno = re.sub("&.*", "", url)
         tokensg[chat] = str(tokeno)
         with open('golink_tokens.py', 'w') as file:
@@ -60,7 +60,7 @@ def ech(update: Update, context: CallbackContext):
 def echo(update: Update, context: CallbackContext):
     if 'https://gplinks.in/api?api=' in str(update.message.text):
         chat = str(update.message.chat_id)
-        url = update.message.text.replace("https://gplinks.in/api?api=", "")
+        url = update.message.text.replace("/gpapi https://gplinks.in/api?api=", "")
         tokenp = re.sub("&.*", "", url)
         tokensp[chat] = str(tokenp)
         with open('gplink_tokens.py', 'w') as file:
@@ -81,7 +81,7 @@ def ecv(update: Update, callback_query):
          update.message.reply_text('plea', reply_markup=reply_markup)
 
 def golink(update: Update, callback_query):  
-    if callback_query.data == "golink":
+    
        try:
             chat = str(update.message.chat_id)
             gotoken = tokensg[chat]
@@ -100,7 +100,7 @@ def golink(update: Update, callback_query):
  
 
 def gplink(update: Update, callback_query): 
-    if callback_query.data == "gplink":
+    
        try:
             chat = str(update.message.chat_id)
             gptoken = tokensp[chat]
