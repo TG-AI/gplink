@@ -71,8 +71,8 @@ def ecv(update: Update, context: CallbackContext):
     if 'https://golinksrt.xyz/api?api=' not in str(update.message.text) and 'https://gplinks.in/api?api=' not in str(update.message.text) and (re.search('^http://.*', str(update.message.text)) or re.search('^https://.*', str(update.message.text))):  
          keyboard = [
                  [
-                     InlineKeyboardButton("gp link", callback_data=str(gplink)),
-                     InlineKeyboardButton("go link", callback_data=str(golink)),
+                     InlineKeyboardButton("gp link", callback_data=gplink),
+                     InlineKeyboardButton("go link", callback_data=golink),
                  ],
              ]
 
